@@ -30,6 +30,8 @@
     <jacoco.version>0.8.5</jacoco.version>
     <nohttp-checkstyle.version>0.0.4.RELEASE</nohttp-checkstyle.version>
     <spring-format.version>0.0.20</spring-format.version>
+
+    <maven.test.skip>true</maven.test.skip>
   </properties>
 
   <dependencies>
@@ -274,6 +276,13 @@
           </dependency>
         </dependencies>
       </plugin>
+
+      <plugin>
+        <groupId>com.google.cloud.tools</groupId>
+		    <artifactId>jib-maven-plugin</artifactId>
+		    <version>2.1.0</version>
+      </plugin>
+      
     </plugins>
   </build>
 
