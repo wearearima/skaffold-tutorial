@@ -1,0 +1,29 @@
+apiVersion: skaffold/v2beta2
+kind: Config
+metadata:
+  name: spring-petclinic
+build:
+  artifacts:
+  - image: skaffold-petclinic
+    context: .
+deploy:
+  kubectl:
+    manifests:
+    - local-deployment.yaml
+profiles:
+  - name: aws
+    activation:
+      - kubeContext: arn:aws:eks:eu-west-3:596212444151:cluster/main
+    build:
+      artifacts:
+        - image: 596212444151.dkr.ecr.eu-west-3.amazonaws.com/skaffold-petclinic
+          context: .
+          jib: {}
+    deploy:
+      kubectl:
+        manifests:
+        - aws-deployment.yaml
+    portForward:
+    - resourceType: Service
+      resourceName: petclinic-service
+      port: 8080
