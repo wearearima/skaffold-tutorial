@@ -1,4 +1,4 @@
-## Buildpacks tutorial
+## Skaffold tutorial
 
 ### About this project
 
